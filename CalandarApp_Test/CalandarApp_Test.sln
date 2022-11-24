@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalandarApp_Test", "CalandarApp_Test.csproj", "{F8CC12BC-9C54-48B8-B950-66B5472524E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8CC12BC-9C54-48B8-B950-66B5472524E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8CC12BC-9C54-48B8-B950-66B5472524E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8CC12BC-9C54-48B8-B950-66B5472524E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8CC12BC-9C54-48B8-B950-66B5472524E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7EFA8C9-10B6-4D97-B49F-48267D81AC52}
+	EndGlobalSection
+EndGlobal
