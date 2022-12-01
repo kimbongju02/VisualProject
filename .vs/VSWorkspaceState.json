@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ProjectCode"
+    "\\ProjectCode",
+    "\\ProjectCode\\Project",
+    "\\ProjectCode\\Project\\Calendar.NETDemo"
   ],
-  "SelectedNode": "\\ProjectCode",
+  "SelectedNode": "\\ProjectCode\\Project\\Calendar.NETDemo\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
