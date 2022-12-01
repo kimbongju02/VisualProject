@@ -8,7 +8,6 @@ namespace Calendar.NET
     /// </summary>
     public class CustomEvent : IEvent
     {
-        public void CustomEvent_Click(object sender, EventArgs e) {Console.Write("aa"); }
         public int Rank
         {
             get;

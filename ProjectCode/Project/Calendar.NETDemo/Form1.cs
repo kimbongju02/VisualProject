@@ -12,6 +12,19 @@ namespace Calendar.NETDemo
 {
     public partial class Form1 : Form
     {
+        [CustomRecurringFunction("RehabDates", "Calculates which days I should be getting Rehab")]
+        private bool RehabDays(IEvent evnt, DateTime day)
+        {
+            if (day.DayOfWeek == DayOfWeek.Monday || day.DayOfWeek == DayOfWeek.Friday)
+            {
+                if (day.Ticks >= (new DateTime(2012, 7, 1)).Ticks)
+                    return false;
+                return true;
+            }
+
+            return false;
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -19,45 +32,38 @@ namespace Calendar.NETDemo
             calendar1.CalendarDate = new DateTime(2012, 5, 2, 0, 0, 0);
             calendar1.CalendarView = CalendarViews.Month;
             calendar1.AllowEditingEvents = true;
-
-
-            
-
             /*
             var groundhogEvent = new HolidayEvent
                                      {
-                                         Date = new DateTime(2012, 2, 2), // 월, 일
-                                         EventText = "Groundhog Day", // 날짜에 추가될 이름
-                                         RecurringFrequency = RecurringFrequencies.Yearly //매년 추가
+                                         Date = new DateTime(2012, 2, 2),
+                                         EventText = "Groundhog Day",
+                                         RecurringFrequency = RecurringFrequencies.Yearly
                                      };
 
             calendar1.AddEvent(groundhogEvent);
-            */
-            /*
+
             var exerciseEvent = new CustomEvent
                                     {
-                                        Date = DateTime.Now,// 오늘날짜
-                                        RecurringFrequency = RecurringFrequencies.EveryMonWedFri,// 매주 월, 수, 금
+                                        Date = DateTime.Now,
+                                        RecurringFrequency = RecurringFrequencies.EveryMonWedFri,
                                         EventLengthInHours = 1,
                                         EventText = "Time for Exercise!"
                                     };
 
 
             calendar1.AddEvent(exerciseEvent);
-            */
 
-            /*
+
             var rehabEvent = new CustomEvent
                 {
                     Date = DateTime.Now,
-                    RecurringFrequency = RecurringFrequencies.Custom, // 커스텀으로 날짜 설정
+                    RecurringFrequency = RecurringFrequencies.Custom,
                     EventText = "Rehab Therapy",
                     Rank = 3,
                     CustomRecurringFunction = RehabDays
                 };
 
             calendar1.AddEvent(rehabEvent);
-            */
 
             //var ce = new CustomEvent();
 
@@ -79,31 +85,30 @@ namespace Calendar.NETDemo
 
             var ce = new CustomEvent();
             ce.IgnoreTimeComponent = false;
-            ce.ReadOnlyEvent = false; // 마우스 오른쪽 클릭으로 수정가능
-            ce.EventText = "Interview"; // 이름
-            ce.Date = new DateTime(2022, 12, 2, 15, 30, 0); // 날짜
-            ce.EventLengthInHours = 2f; //진행시간
-            ce.RecurringFrequency = RecurringFrequencies.None; // 이벤트가 렌더링되는 빈도
+            ce.EventText = "Interview";
+            ce.Date = new DateTime(2012, 5, 2, 15, 30, 0);
+            ce.EventLengthInHours = 2f;
+            ce.RecurringFrequency = RecurringFrequencies.None;
             ce.EventFont = new Font("Verdana", 12, FontStyle.Regular);
-            ce.Enabled = true; // 이벤트 활성화 여부
+            ce.Enabled = true;
             calendar1.AddEvent(ce);
-
-            var ce2= new CustomEvent();
-            ce2.EventText = "add"+"add"; // 이름
-            ce2.Date = new DateTime(2022, 12, 3, 15, 30, 0); // 날짜
-            ce2.EventFont = new Font("Verdana", 12, FontStyle.Regular);
-            ce2.Enabled = true; // 이벤트 활성화 여부
+            */
+            var ce2 = new CustomEvent
+                {
+                    IgnoreTimeComponent = false,
+                    EventText = "Dinner",
+                    Date = new DateTime(2022, 12, 15, 18, 0, 0),
+                    EventLengthInHours = 2f,
+                    RecurringFrequency = RecurringFrequencies.None,
+                    EventFont = new Font("Verdana", 12, FontStyle.Regular),
+                    Enabled = true,
+                    EventColor = Color.FromArgb(120, 255, 120),
+                    EventTextColor = Color.Black,
+                    ThisDayForwardOnly=true
+                };
             calendar1.AddEvent(ce2);
         }
 
-
-
-        [CustomRecurringFunction("Get Monday and Wednesday", "Selects the Monday and Wednesday of each month")]
-        public bool GetMondayAndWednesday(IEvent evnt, DateTime dt)
-        {
-            if (dt.DayOfWeek == DayOfWeek.Monday || dt.DayOfWeek == DayOfWeek.Wednesday)
-                return true;
-            return false;
-        }
+        
     }
 }

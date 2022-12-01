@@ -28,13 +28,6 @@ namespace Calendar.NET
     /// </summary>
     public class Calendar : UserControl
     {
-        public DateTime SelectedDay = DateTime.Now;
-        int StartX = 0;
-        int StartY = 0;
-        int cellWidth = 0;
-        int cellHeight = 0;
-        
-
         private DateTime _calendarDate;
         private Font _dayOfWeekFont;
         private Font _daysFont;
@@ -535,15 +528,7 @@ namespace Calendar.NET
 
         private void CalendarMouseClick(object sender, MouseEventArgs e)
         {
-            cellWidth = (ClientSize.Width - MarginSize * 2) / 7;
-            int numWeeks = NumberOfWeeks(_calendarDate.Year, _calendarDate.Month);
-            //cellHeight = (ClientSize.Height - MarginSize * 2 - headerSpacing - controlsSpacing) / numWeeks;
-            int xStart = MarginSize;
-            StartX = xStart;
-            int yStart = MarginSize;
-            StartY = yStart;
-            
-            if (e.Button == MouseButtons.Right && AllowEditingEvents)
+            if (e.Button == MouseButtons.Left && AllowEditingEvents)
             {
                 if (_calendarView == CalendarViews.Month)
                 {
@@ -563,17 +548,8 @@ namespace Calendar.NET
                     }
                 }
             }
-            if(e.Button == MouseButtons.Left)
-            {
-              Point firstDay = _calendarDays[1];
 
-              int x = (e.X - StartX) / cellWidth ;
-              int y = (e.Y - StartY) / cellHeight - 1;
 
-              int day_offset = (firstDay.X - StartX) / cellWidth;
-
-              SelectedDay = new DateTime(_calendarDate.Year, _calendarDate.Month, 1).AddDays(x + (y * 7) - day_offset);
-            }
         }
 
         private void BtnTodayButtonClicked(object sender)
@@ -1178,7 +1154,5 @@ namespace Calendar.NET
             if (_calendarView == CalendarViews.Day)
                 ResizeScrollPanel();
         }
-
-
     }
 }

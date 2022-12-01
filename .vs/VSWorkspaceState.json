@@ -3,8 +3,9 @@
     "",
     "\\ProjectCode",
     "\\ProjectCode\\Project",
+    "\\ProjectCode\\Project\\Calendar.NET",
     "\\ProjectCode\\Project\\Calendar.NETDemo"
   ],
-  "SelectedNode": "\\ProjectCode\\Project\\Calendar.NETDemo\\Program.cs",
+  "SelectedNode": "\\ProjectCode\\Project\\Calendar.NET.sln",
   "PreviewInSolutionExplorer": false
 }

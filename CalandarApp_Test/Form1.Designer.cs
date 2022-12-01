@@ -42,15 +42,17 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(87, 12);
+            this.monthCalendar1.Location = new System.Drawing.Point(99, 15);
+            this.monthCalendar1.Margin = new System.Windows.Forms.Padding(10, 11, 10, 11);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(251, 186);
+            this.button1.Location = new System.Drawing.Point(287, 232);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 41);
+            this.button1.Size = new System.Drawing.Size(128, 51);
             this.button1.TabIndex = 1;
             this.button1.Text = "일정 추가";
             this.button1.UseVisualStyleBackColor = true;
@@ -58,9 +60,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(251, 233);
+            this.button2.Location = new System.Drawing.Point(287, 291);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 41);
+            this.button2.Size = new System.Drawing.Size(128, 51);
             this.button2.TabIndex = 1;
             this.button2.Text = "일정 삭제";
             this.button2.UseVisualStyleBackColor = true;
@@ -68,9 +71,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(251, 280);
+            this.button3.Location = new System.Drawing.Point(287, 350);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 41);
+            this.button3.Size = new System.Drawing.Size(128, 51);
             this.button3.TabIndex = 1;
             this.button3.Text = "인원 투입";
             this.button3.UseVisualStyleBackColor = true;
@@ -94,23 +98,25 @@
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1,
             listViewItem2});
-            this.listView1.Location = new System.Drawing.Point(18, 186);
+            this.listView1.Location = new System.Drawing.Point(21, 232);
+            this.listView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(220, 135);
+            this.listView1.Size = new System.Drawing.Size(251, 168);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 361);
+            this.ClientSize = new System.Drawing.Size(439, 451);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.monthCalendar1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Scheduler";
             this.ResumeLayout(false);
