@@ -32,5 +32,18 @@ namespace Calender_program
             adf.Show();
             this.Hide();
         }
+
+        private void delete_calender_button_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.Tag = this;   
+            form1.Show();
+            this.Hide();
+        }
     }
 }

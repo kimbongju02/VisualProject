@@ -24,6 +24,12 @@ namespace Calender_program
 
         private void add_date_cancle_button_Click(object sender, EventArgs e)
         {
+            Close();
+            click_calender_button_form click_Calender_Button_Form = new click_calender_button_form();
+            click_Calender_Button_Form.Tag = this;
+            click_Calender_Button_Form.Show();
+            this.Hide();
+
 
         }
     }

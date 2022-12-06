@@ -48,6 +48,7 @@
             this.change_calender_cancle_button.TabIndex = 19;
             this.change_calender_cancle_button.Text = "취소";
             this.change_calender_cancle_button.UseVisualStyleBackColor = true;
+            this.change_calender_cancle_button.Click += new System.EventHandler(this.change_calender_cancle_button_Click);
             // 
             // change_calender_change_button
             // 
