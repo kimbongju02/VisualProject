@@ -3,6 +3,8 @@ using System;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace Calendar.NET
@@ -42,6 +44,25 @@ namespace Calendar.NET
 
         private void EventDetailsLoad(object sender, EventArgs e)
         {
+            String fisrtDay = _event.Date.ToString("yyyy/M/d");
+
+            _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
+            try
+            {
+                using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
+                {
+                    mysql.Open();
+                    string selectQuery = ($"select * from 현장 where {fisrtDay};");
+
+                    MySqlCommand command2 = new MySqlCommand(selectQuery, mysql);
+                    MySqlDataReader table2 = command2.ExecuteReader();
+                    table2.Close();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         private void FillValues()
@@ -63,7 +84,6 @@ namespace Calendar.NET
             String fisrtDay = _event.Date.ToString("yyyy/M/d");
             String text = txtEventName.Text;
             String day = dtDate.Value.ToString("yyyy/M/d");
-            MessageBox.Show(day.ToString());
             String detail = textBox1.Text;
 
             _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
@@ -74,6 +94,7 @@ namespace Calendar.NET
                     mysql.Open();
                     string diableSafe = "SET SQL_SAFE_UPDATES = 0";
                     string selectQuery = ($"update 현장 set 이름='{text}', 날짜='{day}', 세부사항='{detail}' where 날짜='{fisrtDay}';");
+                    string ableSafe = "SET SQL_SAFE_UPDATES = 1";
 
                     MySqlCommand command1 = new MySqlCommand(diableSafe, mysql);
                     MySqlDataReader table1 = command1.ExecuteReader();
@@ -81,6 +102,9 @@ namespace Calendar.NET
                     MySqlCommand command2 = new MySqlCommand(selectQuery, mysql);
                     MySqlDataReader table2 = command2.ExecuteReader();
                     table2.Close();
+                    MySqlCommand command3 = new MySqlCommand(ableSafe, mysql);
+                    MySqlDataReader table3 = command3.ExecuteReader();
+                    table3.Close();
                 }
             }
             catch (Exception exc)
@@ -99,10 +123,8 @@ namespace Calendar.NET
 
         private void button1_Click(object sender, EventArgs e)
         {
-            String text = txtEventName.Text;
-            DateTime day = dtDate.Value;
-            String detail = textBox1.Text;
-
+            String day = dtDate.Value.ToString("yyyy/M/d");
+            _newEvent.Date = Convert.ToDateTime("2020-01-01");
             DialogResult = DialogResult.OK;
 
             _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
@@ -111,11 +133,19 @@ namespace Calendar.NET
                 using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
                 {
                     mysql.Open();
-                    string selectQuery = ($"drop from '현장' where '날짜'={day}");
+                    string diableSafe = "SET SQL_SAFE_UPDATES = 0";
+                    string selectQuery = ($"delete from 현장 where 날짜='{day}'");
+                    string ableSafe = "SET SQL_SAFE_UPDATES = 1";
 
-                    MySqlCommand command = new MySqlCommand(selectQuery, mysql);
-                    MySqlDataReader table = command.ExecuteReader();
-                    table.Close();
+                    MySqlCommand command1 = new MySqlCommand(diableSafe, mysql);
+                    MySqlDataReader table1 = command1.ExecuteReader();
+                    table1.Close();
+                    MySqlCommand command2 = new MySqlCommand(selectQuery, mysql);
+                    MySqlDataReader table2 = command2.ExecuteReader();
+                    table2.Close();
+                    MySqlCommand command3 = new MySqlCommand(ableSafe, mysql);
+                    MySqlDataReader table3 = command3.ExecuteReader();
+                    table3.Close();
                 }
             }
             catch (Exception exc)
