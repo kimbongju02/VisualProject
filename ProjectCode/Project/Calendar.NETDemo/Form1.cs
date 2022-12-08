@@ -11,6 +11,7 @@ using MySql.Data.MySqlClient;
 
 
 
+
 namespace Calendar.NETDemo
 {
     public partial class Form1 : Form
@@ -24,6 +25,7 @@ namespace Calendar.NETDemo
         [CustomRecurringFunction("RehabDates", "Calculates which days I should be getting Rehab")]
 
         public static String addDay="";//날짜 추가버튼에서 사용할 날짜
+        public static String addButtonName = "";
 
         private bool RehabDays(IEvent evnt, DateTime day)
         {
@@ -51,7 +53,11 @@ namespace Calendar.NETDemo
         {
             AddDetails f1 = new AddDetails();
             f1.Show();
-            MessageBox.Show(addDay);
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
             _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
             try
             {
@@ -59,7 +65,7 @@ namespace Calendar.NETDemo
                 {
                     mysql.Open();
                     //accounts_table의 전체 데이터를 조회합니다.            
-                    string selectQuery = string.Format($"SELECT * FROM 현장 where 날짜='{addDay}'");
+                    string selectQuery = string.Format($"SELECT * FROM 현장");
 
                     MySqlCommand command = new MySqlCommand(selectQuery, mysql);
                     MySqlDataReader table = command.ExecuteReader();
@@ -88,7 +94,6 @@ namespace Calendar.NETDemo
             {
                 MessageBox.Show("Form1 button1_Click\n"+exc.Message);
             }
-        }  
-        
+        }
     }
 }
