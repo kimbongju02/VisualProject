@@ -32,12 +32,15 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.txtEventName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.dtDate = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.gbBasics = new System.Windows.Forms.GroupBox();
-            this.gbBasics.SuspendLayout();
+            this.txtEventName = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // fontDialog1
@@ -66,68 +69,107 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
-            // txtEventName
+            // label2
             // 
-            this.txtEventName.Location = new System.Drawing.Point(95, 42);
-            this.txtEventName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtEventName.Multiline = true;
-            this.txtEventName.Name = "txtEventName";
-            this.txtEventName.Size = new System.Drawing.Size(265, 51);
-            this.txtEventName.TabIndex = 1;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(44, 39);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 15);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "현장 날짜";
             // 
             // dtDate
             // 
-            this.dtDate.CustomFormat = "M/d/yyyy h:mm tt";
+            this.dtDate.CustomFormat = "yyyy/M/d";
             this.dtDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtDate.Location = new System.Drawing.Point(95, 15);
+            this.dtDate.Location = new System.Drawing.Point(131, 39);
             this.dtDate.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dtDate.Name = "dtDate";
             this.dtDate.Size = new System.Drawing.Size(265, 25);
-            this.dtDate.TabIndex = 2;
+            this.dtDate.TabIndex = 10;
+            this.dtDate.Value = new System.DateTime(2022, 12, 8, 0, 0, 0, 0);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 44);
+            this.label1.Location = new System.Drawing.Point(44, 86);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Event Name:";
+            this.label1.Size = new System.Drawing.Size(72, 15);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "현장 이름";
             // 
-            // label2
+            // txtEventName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 18);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Event Date:";
+            this.txtEventName.Location = new System.Drawing.Point(131, 83);
+            this.txtEventName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtEventName.Multiline = true;
+            this.txtEventName.Name = "txtEventName";
+            this.txtEventName.Size = new System.Drawing.Size(265, 25);
+            this.txtEventName.TabIndex = 12;
             // 
-            // gbBasics
+            // label3
             // 
-            this.gbBasics.Controls.Add(this.label2);
-            this.gbBasics.Controls.Add(this.label1);
-            this.gbBasics.Controls.Add(this.dtDate);
-            this.gbBasics.Controls.Add(this.txtEventName);
-            this.gbBasics.Location = new System.Drawing.Point(16, 14);
-            this.gbBasics.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.gbBasics.Name = "gbBasics";
-            this.gbBasics.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.gbBasics.Size = new System.Drawing.Size(368, 99);
-            this.gbBasics.TabIndex = 4;
-            this.gbBasics.TabStop = false;
-            this.gbBasics.Text = "Basics";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(44, 168);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "세부사항";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(47, 186);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(349, 146);
+            this.textBox1.TabIndex = 14;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(44, 131);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(72, 15);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "투입 인원";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(133, 128);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(263, 50);
+            this.textBox2.TabIndex = 16;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(180, 340);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 27);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Delete";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // EventDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 373);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtEventName);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dtDate);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.gbBasics);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
@@ -137,9 +179,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "EventDetails";
             this.Load += new System.EventHandler(this.EventDetailsLoad);
-            this.gbBasics.ResumeLayout(false);
-            this.gbBasics.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -148,10 +189,14 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox txtEventName;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtDate;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox gbBasics;
+        private System.Windows.Forms.TextBox txtEventName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button1;
     }
 }
