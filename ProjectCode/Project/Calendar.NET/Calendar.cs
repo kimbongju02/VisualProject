@@ -166,7 +166,6 @@ namespace Calendar.NET
                 if (_loadPresetHolidays)
                 {
                     _events.Clear();
-                    PresetHolidays();
                     Refresh();
                 }
                 else
@@ -598,102 +597,6 @@ namespace Calendar.NET
             Refresh();
         }
 
-        private void PresetHolidays()
-        {
-            var aprilFools = new HolidayEvent
-            {
-                Date = new DateTime(DateTime.Now.Year, 4, 1),
-                RecurringFrequency = RecurringFrequencies.Yearly,
-                EventText = "April Fools Day"
-            };
-            AddEvent(aprilFools);
-
-            var memorialDay = new HolidayEvent
-            {
-                Date = new DateTime(DateTime.Now.Year, 5, 28),
-                RecurringFrequency = RecurringFrequencies.Custom,
-                EventText = "Memorial Day",
-                CustomRecurringFunction = MemorialDayHandler
-            };
-            AddEvent(memorialDay);
-
-            var newYears = new HolidayEvent
-            {
-                Date = new DateTime(DateTime.Now.Year, 1, 1),
-                RecurringFrequency = RecurringFrequencies.Yearly,
-                EventText = "New Years Day"
-            };
-            AddEvent(newYears);
-
-            var mlkDay = new HolidayEvent
-            {
-                Date = new DateTime(DateTime.Now.Year, 1, 15),
-                RecurringFrequency = RecurringFrequencies.Custom,
-                EventText = "Martin Luther King Jr. Day",
-                CustomRecurringFunction = MlkDayHandler
-            };
-            AddEvent(mlkDay);
-
-            var presidentsDay = new HolidayEvent
-            {
-                Date = new DateTime(DateTime.Now.Year, 2, 15),
-                RecurringFrequency = RecurringFrequencies.Custom,
-                EventText = "President's Day",
-                CustomRecurringFunction = MlkDayHandler
-            };
-            AddEvent(presidentsDay);
-
-            var independanceDay = new HolidayEvent
-            {
-                Date = new DateTime(DateTime.Now.Year, 7, 4),
-                RecurringFrequency = RecurringFrequencies.Yearly,
-                EventText = "Independence Day"
-            };
-            AddEvent(independanceDay);
-
-            var laborDay = new HolidayEvent
-            {
-                Date = new DateTime(DateTime.Now.Year, 9, 1),
-                RecurringFrequency = RecurringFrequencies.Custom,
-                EventText = "Labor Day",
-                CustomRecurringFunction = LaborDayHandler
-            };
-            AddEvent(laborDay);
-
-            var columbusDay = new HolidayEvent
-            {
-                Date = new DateTime(DateTime.Now.Year, 10, 14),
-                RecurringFrequency = RecurringFrequencies.Custom,
-                EventText = "Columbus Day",
-                CustomRecurringFunction = ColumbusDayHandler
-            };
-            AddEvent(columbusDay);
-
-            var veteransDay = new HolidayEvent
-            {
-                Date = new DateTime(DateTime.Now.Year, 11, 11),
-                RecurringFrequency = RecurringFrequencies.Yearly,
-                EventText = "Veteran's Day"
-            };
-            AddEvent(veteransDay);
-
-            var thanksgivingDay = new HolidayEvent
-            {
-                Date = new DateTime(DateTime.Now.Year, 11, 11),
-                RecurringFrequency = RecurringFrequencies.Custom,
-                EventText = "Thanksgiving Day",
-                CustomRecurringFunction = ThanksgivingDayHandler
-            };
-            AddEvent(thanksgivingDay);
-
-            var christmas = new HolidayEvent
-            {
-                Date = new DateTime(DateTime.Now.Year, 12, 25),
-                RecurringFrequency = RecurringFrequencies.Yearly,
-                EventText = "Christmas Day"
-            };
-            AddEvent(christmas);
-        }
 
         [CustomRecurringFunction("Thanksgiving Day Handler", "Selects the fourth Thursday in the month")]
         private bool ThanksgivingDayHandler(IEvent evnt, DateTime dt)
