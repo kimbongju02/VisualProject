@@ -18,9 +18,9 @@ namespace Calendar.NETDemo
     {
         string _server = "localhost";
         int _port = 3306;
-        string _database = "mstore2";
+        string _database = "visual_db";
         string _id = "root";
-        string _pw = "bong02";
+        string _pw = "Halkeye14!";
         string _connectionAddress = "";
         [CustomRecurringFunction("RehabDates", "Calculates which days I should be getting Rehab")]
 
@@ -43,7 +43,7 @@ namespace Calendar.NETDemo
         {
             InitializeComponent();
             
-            calendar1.CalendarDate = new DateTime(2012, 5, 2, 0, 0, 0);
+            calendar1.CalendarDate = DateTime.Today; // 오늘 날짜 자동 설정
             calendar1.CalendarView = CalendarViews.Month;
             calendar1.AllowEditingEvents = true;
             
@@ -53,7 +53,6 @@ namespace Calendar.NETDemo
         {
             AddDetails f1 = new AddDetails();
             f1.Show();
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -66,13 +65,16 @@ namespace Calendar.NETDemo
                     mysql.Open();
                     //accounts_table의 전체 데이터를 조회합니다.            
                     string selectQuery = string.Format($"SELECT * FROM 현장");
+                    string selectQuery2 = string.Format($"SELECT * FROM 현장투입");
 
                     MySqlCommand command = new MySqlCommand(selectQuery, mysql);
+                    MySqlCommand command2 = new MySqlCommand(selectQuery2, mysql);
+
                     MySqlDataReader table = command.ExecuteReader();
 
                     while (table.Read())
                     {
-                        var ce2 = new CustomEvent
+                        var ce2 = new CustomEvent // 현장 추가 이벤트
                         {
                             IgnoreTimeComponent = false,
                             EventText = table["이름"].ToString(),
@@ -88,12 +90,37 @@ namespace Calendar.NETDemo
                         calendar1.AddEvent(ce2);
                     }
                     table.Close();
+
+                    MySqlDataReader table2 = command2.ExecuteReader();
+                    while (table2.Read())
+                    {
+                        var ce3 = new CustomEvent // 인원 투입 이벤트
+                        {
+                            IgnoreTimeComponent = false,
+                            EventText = table2["이름"].ToString(),
+                            Date = Convert.ToDateTime(table2["날짜"].ToString()),
+                            EventLengthInHours = 2f,
+                            RecurringFrequency = RecurringFrequencies.None,
+                            EventFont = new Font("Verdana", 12, FontStyle.Regular),
+                            Enabled = true,
+                            EventColor = Color.FromArgb(120, 255, 120),
+                            EventTextColor = Color.Black,
+                            ThisDayForwardOnly = true
+                        };
+                        calendar1.AddEvent(ce3);
+                    }
                 }
             }
             catch (Exception exc)
             {
                 MessageBox.Show("Form1 button1_Click\n"+exc.Message);
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            InputPeople f2 = new InputPeople();
+            f2.Show();
         }
     }
 }
