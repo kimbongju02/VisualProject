@@ -6,6 +6,8 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
+using Calendar.NET;
+using Calendar.NETDemo;
 
 
 namespace Calendar.NET
@@ -14,9 +16,9 @@ namespace Calendar.NET
     {
         string _server = "localhost";
         int _port = 3306;
-        string _database = "visual_db";
+        string _database = "calendardb";
         string _id = "root";
-        string _pw = "Halkeye14!";
+        string _pw = "bong02";
         string _connectionAddress = "";
         [CustomRecurringFunction("RehabDates", "Calculates which days I should be getting Rehab")]
 
@@ -63,7 +65,7 @@ namespace Calendar.NET
             String text = txtEventName.Text;
             String day = dtDate.Value.ToString("yyyy/M/d");
             String detail = textBox1.Text;
-            Form1.addDay = day;
+            
 
             _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
             try
@@ -71,7 +73,8 @@ namespace Calendar.NET
                 using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
                 {
                     mysql.Open();
-                    string selectQuery = ($"insert into 현장(이름, 날짜, 세부사항) values('{text}','{day}','{detail}');");
+                    string selectQuery = ($"insert into 현장(CalendarField, CalendarDay, CalendarDetail) " +
+                        $"values('{text}','{day}','{detail}');");
 
                     MySqlCommand command = new MySqlCommand(selectQuery, mysql);
                     MySqlDataReader table = command.ExecuteReader();
@@ -90,6 +93,7 @@ namespace Calendar.NET
                     EventTextColor = Color.Black,
                     ThisDayForwardOnly=true
                 };
+                Form1.calendar1.AddEvent(ce2);
             }
             catch (Exception exc)
             {

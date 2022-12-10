@@ -18,9 +18,9 @@ namespace TeamProject3
     {
         string _server = "localhost";
         int _port = 3306;
-        string _database = "coding32";
+        string _database = "calendardb";
         string _id = "root";
-        string _pw = "dy12121004?";
+        string _pw = "bong02";
         string _connectionAddress = "";
 
         public Form_Management()
@@ -43,7 +43,7 @@ namespace TeamProject3
                 using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
                 {
                     mysql.Open();
-                    string selectQuery = string.Format("SELECT * FROM co32table");
+                    string selectQuery = string.Format("SELECT * FROM 인원");
 
                     MySqlCommand command = new MySqlCommand(selectQuery, mysql);
                     MySqlDataReader table = command.ExecuteReader();
@@ -54,14 +54,14 @@ namespace TeamProject3
                     {
                         ListViewItem item = new ListViewItem();
                         item.Text = table["ID"].ToString();
-                        item.SubItems.Add(table["Name"].ToString());
+                        item.SubItems.Add(table["PeopleName"].ToString());
                         item.SubItems.Add(table["PhoneNumber"].ToString());
                         item.SubItems.Add(table["Address"].ToString());
                         item.SubItems.Add(table["Sex"].ToString());
                         item.SubItems.Add(table["Height"].ToString());
                         item.SubItems.Add(table["Weight"].ToString());
                         item.SubItems.Add(table["Uniform"].ToString());
-                        item.SubItems.Add(table["Detail"].ToString());
+                        item.SubItems.Add(table["PeopleDetail"].ToString());
                         listViewPhoneBook.Items.Add(item);
                     }
 
@@ -83,8 +83,10 @@ namespace TeamProject3
                 {
 
                     mysql.Open();
-                    string insertQuery = string.Format("INSERT INTO co32table (Name, PhoneNumber, Address, Sex, Height, Weight, Uniform, Detail) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
-                        textBoxName.Text, textBoxPhone.Text, textBoxAddress.Text, textBoxSex.Text, textBoxHeight.Text, textBoxWeight.Text, textBoxUniform.Text, textBoxDetail.Text);
+                    string insertQuery = string.Format("INSERT INTO calendardb (PeopleName, PhoneNumber, Address, Sex, Height, Weight, Uniform, PeopleDetail) " +
+                        "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
+                        textBoxName.Text, textBoxPhone.Text, textBoxAddress.Text, textBoxSex.Text, 
+                        textBoxHeight.Text, textBoxWeight.Text, textBoxUniform.Text, textBoxDetail.Text);
 
                     MySqlCommand command = new MySqlCommand(insertQuery, mysql);
                     if (command.ExecuteNonQuery() != 1)
@@ -119,7 +121,7 @@ namespace TeamProject3
                     mysql.Open();
                     int pos = listViewPhoneBook.SelectedItems[0].Index;
                     int index = Convert.ToInt32(listViewPhoneBook.Items[pos].Text);
-                    string updateQuery = string.Format("UPDATE co32table SET Name = '{1}', PhoneNumber = '{2}',  Address = '{3}', Sex = '{4}', Height = '{5}',  Weight = '{6}', Uniform = '{7}', Detail = '{8}' WHERE id={0};", index,
+                    string updateQuery = string.Format("UPDATE calendardb SET Name = '{1}', PhoneNumber = '{2}',  Address = '{3}', Sex = '{4}', Height = '{5}',  Weight = '{6}', Uniform = '{7}', Detail = '{8}' WHERE id={0};", index,
                         textBoxName.Text, textBoxPhone.Text, textBoxAddress.Text, textBoxSex.Text, textBoxHeight.Text, textBoxWeight.Text, textBoxUniform.Text, textBoxDetail.Text);
 
                     MySqlCommand command = new MySqlCommand(updateQuery, mysql);
@@ -160,7 +162,7 @@ namespace TeamProject3
                         mysql.Open();
                         int pos = listViewPhoneBook.SelectedItems[0].Index;
                         int index = Convert.ToInt32(listViewPhoneBook.Items[pos].Text);
-                        string deleteQuery = string.Format("DELETE FROM co32table WHERE Id={0};", index);
+                        string deleteQuery = string.Format("DELETE FROM calendardb WHERE Id={0};", index);
 
                         MySqlCommand command = new MySqlCommand(deleteQuery, mysql);
                         if (command.ExecuteNonQuery() != 1)
@@ -234,7 +236,7 @@ namespace TeamProject3
                 {
                     mysql.Open();
                    
-                    string selectQuery = string.Format("SELECT * FROM co32table");
+                    string selectQuery = string.Format("SELECT * FROM calendardb");
 
                     MySqlCommand command = new MySqlCommand(selectQuery, mysql);
                     MySqlDataReader table = command.ExecuteReader();
@@ -244,19 +246,19 @@ namespace TeamProject3
 
                     while (table.Read())
                     {
-                        if (table["Name"].ToString() == textBoxName0.Text)   
+                        if (table["PeopleName"].ToString() == textBoxName0.Text)   
                         {
 
                             ListViewItem item = new ListViewItem();
                             item.Text = table["ID"].ToString();
-                            item.SubItems.Add(table["Name"].ToString());
+                            item.SubItems.Add(table["PeopleName"].ToString());
                             item.SubItems.Add(table["PhoneNumber"].ToString());
                             item.SubItems.Add(table["Address"].ToString());
                             item.SubItems.Add(table["Sex"].ToString());
                             item.SubItems.Add(table["Height"].ToString());
                             item.SubItems.Add(table["Weight"].ToString());
                             item.SubItems.Add(table["Uniform"].ToString());
-                            item.SubItems.Add(table["Detail"].ToString());
+                            item.SubItems.Add(table["PeopleDetail"].ToString());
                             listViewPhoneBook.Items.Add(item);
 
                         }
