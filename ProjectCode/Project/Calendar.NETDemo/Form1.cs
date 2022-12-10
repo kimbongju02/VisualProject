@@ -18,9 +18,9 @@ namespace Calendar.NETDemo
     {
         string _server = "localhost";
         int _port = 3306;
-        string _database = "visual_db";
+        string _database = "calendardb";
         string _id = "root";
-        string _pw = "Halkeye14!";
+        string _pw = "bong02";
         string _connectionAddress = "";
         [CustomRecurringFunction("RehabDates", "Calculates which days I should be getting Rehab")]
 
@@ -65,7 +65,7 @@ namespace Calendar.NETDemo
                     mysql.Open();
                     //accounts_table의 전체 데이터를 조회합니다.            
                     string selectQuery = string.Format($"SELECT * FROM 현장");
-                    string selectQuery2 = string.Format($"SELECT * FROM 현장투입");
+                    string selectQuery2 = string.Format($"SELECT * FROM 인원");
 
                     MySqlCommand command = new MySqlCommand(selectQuery, mysql);
                     MySqlCommand command2 = new MySqlCommand(selectQuery2, mysql);
@@ -77,8 +77,8 @@ namespace Calendar.NETDemo
                         var ce2 = new CustomEvent // 현장 추가 이벤트
                         {
                             IgnoreTimeComponent = false,
-                            EventText = table["이름"].ToString(),
-                            Date = Convert.ToDateTime(table["날짜"].ToString()),
+                            EventText = table["CalendarField"].ToString(),
+                            Date = Convert.ToDateTime(table["CalendarDay"].ToString()),
                             EventLengthInHours = 2f,
                             RecurringFrequency = RecurringFrequencies.None,
                             EventFont = new Font("Verdana", 12, FontStyle.Regular),
@@ -97,8 +97,8 @@ namespace Calendar.NETDemo
                         var ce3 = new CustomEvent // 인원 투입 이벤트
                         {
                             IgnoreTimeComponent = false,
-                            EventText = table2["이름"].ToString(),
-                            Date = Convert.ToDateTime(table2["날짜"].ToString()),
+                            EventText = table2["PeopleName"].ToString(),
+                            Date = Convert.ToDateTime(table2["PeopleDay"].ToString()),
                             EventLengthInHours = 2f,
                             RecurringFrequency = RecurringFrequencies.None,
                             EventFont = new Font("Verdana", 12, FontStyle.Regular),

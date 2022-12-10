@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Relational;
 using System;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,9 +15,9 @@ namespace Calendar.NET
     {
         string _server = "localhost";
         int _port = 3306;
-        string _database = "visual_db";
+        string _database = "calendardb";
         string _id = "root";
-        string _pw = "Halkeye14!";
+        string _pw = "bong02";
         string _connectionAddress = "";
         [CustomRecurringFunction("RehabDates", "Calculates which days I should be getting Rehab")]
 
@@ -51,11 +53,16 @@ namespace Calendar.NET
                 using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
                 {
                     mysql.Open();
-                    string selectQuery = ($"select * from 현장 where {fisrtDay};");
+                    string selectQuery = ($"select * from 현장 where CalendarDay='{fisrtDay}';");
 
                     MySqlCommand command2 = new MySqlCommand(selectQuery, mysql);
                     MySqlDataReader table2 = command2.ExecuteReader();
-                    table2.Close();
+                    while (table2.Read())
+                    {
+                        DetailTextBox.Text = table2["CalendarDetail"].ToString();
+                    }
+
+                        table2.Close();
                 }
             }
             catch (Exception exc)
@@ -83,7 +90,7 @@ namespace Calendar.NET
             String fisrtDay = _event.Date.ToString("yyyy/M/d");
             String text = txtEventName.Text;
             String day = dtDate.Value.ToString("yyyy/M/d");
-            String detail = textBox1.Text;
+            String detail = DetailTextBox.Text;
 
             try
             {
@@ -91,7 +98,7 @@ namespace Calendar.NET
                 {
                     mysql.Open();
                     string diableSafe = "SET SQL_SAFE_UPDATES = 0";
-                    string selectQuery = ($"update 현장 set 이름='{text}', 날짜='{day}', 세부사항='{detail}' where 날짜='{fisrtDay}';");
+                    string selectQuery = ($"update 현장 set CalendarField='{text}', CalendarDay='{day}', CalendarDetail='{detail}' where CalendarDay='{fisrtDay}';");
                     string ableSafe = "SET SQL_SAFE_UPDATES = 1";
 
                     MySqlCommand command1 = new MySqlCommand(diableSafe, mysql);
@@ -131,7 +138,7 @@ namespace Calendar.NET
                 {
                     mysql.Open();
                     string diableSafe = "SET SQL_SAFE_UPDATES = 0";
-                    string selectQuery = ($"delete from 현장 where 날짜='{day}'");
+                    string selectQuery = ($"delete from 현장 where CalendarDay='{day}'");
                     string ableSafe = "SET SQL_SAFE_UPDATES = 1";
 
                     MySqlCommand command1 = new MySqlCommand(diableSafe, mysql);
