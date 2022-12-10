@@ -14,9 +14,9 @@ namespace Calendar.NET
     {
         string _server = "localhost";
         int _port = 3306;
-        string _database = "mstore2";
+        string _database = "visual_db";
         string _id = "root";
-        string _pw = "bong02";
+        string _pw = "Halkeye14!";
         string _connectionAddress = "";
         [CustomRecurringFunction("RehabDates", "Calculates which days I should be getting Rehab")]
 
@@ -51,7 +51,7 @@ namespace Calendar.NET
         {
             txtEventName.Text = _event.EventText;
             dtDate.Value = _event.Date;
-            dtDate.CustomFormat = _event.IgnoreTimeComponent ? "yyyy/M/d" : "yyyy/M/d";//시간 찾기
+            dtDate.CustomFormat = _event.IgnoreTimeComponent ? "yyyy/M/d" : "yyyy/M/d"; //시간 찾기
 
             Text = char.ToUpper(_event.EventText[0]) + _event.EventText.Substring(1) + " Details";
 
@@ -90,7 +90,6 @@ namespace Calendar.NET
                     EventTextColor = Color.Black,
                     ThisDayForwardOnly=true
                 };
-                Form1.calendar1.AddEvent(ce2);
             }
             catch (Exception exc)
             {
@@ -108,7 +107,5 @@ namespace Calendar.NET
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
-
     }
 }

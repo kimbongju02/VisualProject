@@ -13,9 +13,9 @@ namespace Calendar.NET
     {
         string _server = "localhost";
         int _port = 3306;
-        string _database = "mstore2";
+        string _database = "visual_db";
         string _id = "root";
-        string _pw = "bong02";
+        string _pw = "Halkeye14!";
         string _connectionAddress = "";
         [CustomRecurringFunction("RehabDates", "Calculates which days I should be getting Rehab")]
 
@@ -40,13 +40,12 @@ namespace Calendar.NET
         public EventDetails()
         {
             InitializeComponent();
+            _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
         }
 
         private void EventDetailsLoad(object sender, EventArgs e)
         {
             String fisrtDay = _event.Date.ToString("yyyy/M/d");
-
-            _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
             try
             {
                 using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
@@ -86,7 +85,6 @@ namespace Calendar.NET
             String day = dtDate.Value.ToString("yyyy/M/d");
             String detail = textBox1.Text;
 
-            _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
             try
             {
                 using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
@@ -127,7 +125,6 @@ namespace Calendar.NET
             _newEvent.Date = Convert.ToDateTime("2020-01-01");
             DialogResult = DialogResult.OK;
 
-            _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
             try
             {
                 using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
