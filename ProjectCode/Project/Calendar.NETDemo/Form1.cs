@@ -20,7 +20,7 @@ namespace Calendar.NETDemo
         int _port = 3306;
         string _database = "calendardb";
         string _id = "root";
-        string _pw = "bong02";
+        string _pw = "Halkeye14!";
         string _connectionAddress = "";
         [CustomRecurringFunction("RehabDates", "Calculates which days I should be getting Rehab")]
 

@@ -81,3 +81,46 @@ C:\Users\kimbo\OneDrive\바탕 화면\2-2수업\비주얼프로그래밍\프로�
 C:\Users\kimbo\OneDrive\바탕 화면\2-2수업\비주얼프로그래밍\프로젝트\code\ProjectCode\Project\Calendar.NETDemo\bin\Debug\TeamProject3.exe
 C:\Users\kimbo\OneDrive\바탕 화면\2-2수업\비주얼프로그래밍\프로젝트\code\ProjectCode\Project\Calendar.NETDemo\bin\Debug\TeamProject3.pdb
 C:\Users\kimbo\OneDrive\바탕 화면\2-2수업\비주얼프로그래밍\프로젝트\code\ProjectCode\Project\Calendar.NETDemo\bin\Debug\TeamProject3.exe.config
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\Calendar.NETDemo.exe.config
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\Calendar.NETDemo.exe
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\Calendar.NETDemo.pdb
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\Calendar.NET.dll
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\Google.Protobuf.dll
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\MySql.Data.dll
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\System.Buffers.dll
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\System.Memory.dll
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\TeamProject3.exe
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\ZstdNet.dll
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\Calendar.NET.pdb
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\Calendar.NET.xml
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\Calendar.NET.dll.config
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\TeamProject3.pdb
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\TeamProject3.exe.config
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\BouncyCastle.Crypto.xml
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\Google.Protobuf.pdb
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\Google.Protobuf.xml
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\MySql.Data.xml
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\System.Buffers.xml
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\System.Memory.xml
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\obj\x86\Debug\Calendar.NETDemo.csproj.AssemblyReference.cache
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\obj\x86\Debug\Calendar.NETDemo.csproj.SuggestedBindingRedirects.cache
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\obj\x86\Debug\Calendar.NET.AddDetails.resources
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\obj\x86\Debug\Calendar.NETDemo.Form1.resources
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\obj\x86\Debug\Calendar.NETDemo.InputPeople.resources
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\obj\x86\Debug\Calendar.NETDemo.Properties.Resources.resources
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\obj\x86\Debug\Calendar.NETDemo.csproj.GenerateResource.cache
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\obj\x86\Debug\Calendar.NETDemo.csproj.CoreCompileInputs.cache
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\obj\x86\Debug\Calendar.NETDemo.csproj.CopyComplete
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\obj\x86\Debug\Calendar.NETDemo.exe
+C:\Users\문정준\Source\Repos\VisualProjectfinal\ProjectCode\Project\Calendar.NETDemo\obj\x86\Debug\Calendar.NETDemo.pdb

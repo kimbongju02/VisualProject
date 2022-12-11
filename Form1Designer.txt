@@ -31,7 +31,7 @@ namespace Calendar.NETDemo
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.calendar1 = new Calendar.NET.Calendar();
+            calendar1 = new Calendar.NET.Calendar();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.달력ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,8 +64,8 @@ namespace Calendar.NETDemo
             // calendar1
             // 
             calendar1.AllowEditingEvents = false;
-            calendar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            calendar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             calendar1.BackColor = System.Drawing.Color.Transparent;
             calendar1.CalendarDate = new System.DateTime(2012, 4, 24, 13, 16, 0, 0);

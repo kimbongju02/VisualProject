@@ -55,16 +55,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.buttonField = new System.Windows.Forms.Button();
-            this.buttonData = new System.Windows.Forms.Button();
+            this.deleteDay = new System.Windows.Forms.Button();
             this.listViewPhoneBook = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -280,7 +279,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 94);
+            this.label5.Location = new System.Drawing.Point(7, 105);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 15);
             this.label5.TabIndex = 77;
@@ -293,6 +292,7 @@
             this.textBoxHeight.Name = "textBoxHeight";
             this.textBoxHeight.Size = new System.Drawing.Size(100, 25);
             this.textBoxHeight.TabIndex = 76;
+            this.textBoxHeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxHeight_KeyPress);
             // 
             // label8
             // 
@@ -327,6 +327,7 @@
             this.textBoxWeight.Name = "textBoxWeight";
             this.textBoxWeight.Size = new System.Drawing.Size(100, 25);
             this.textBoxWeight.TabIndex = 78;
+            this.textBoxWeight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxWeight_KeyPress);
             // 
             // label7
             // 
@@ -375,8 +376,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox2.Controls.Add(this.buttonField);
-            this.groupBox2.Controls.Add(this.buttonData);
+            this.groupBox2.Controls.Add(this.deleteDay);
             this.groupBox2.Controls.Add(this.listViewPhoneBook);
             this.groupBox2.Controls.Add(this.buttonDelete);
             this.groupBox2.Controls.Add(this.buttonCancel);
@@ -389,38 +389,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "인원목록";
             // 
-            // buttonField
+            // deleteDay
             // 
-            this.buttonField.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonField.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonField.FlatAppearance.BorderSize = 2;
-            this.buttonField.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonField.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonField.ForeColor = System.Drawing.Color.White;
-            this.buttonField.Location = new System.Drawing.Point(755, 26);
-            this.buttonField.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonField.Name = "buttonField";
-            this.buttonField.Size = new System.Drawing.Size(104, 46);
-            this.buttonField.TabIndex = 54;
-            this.buttonField.Text = "현장추가";
-            this.buttonField.UseVisualStyleBackColor = false;
-            // 
-            // buttonData
-            // 
-            this.buttonData.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.buttonData.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.buttonData.FlatAppearance.BorderSize = 2;
-            this.buttonData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonData.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonData.ForeColor = System.Drawing.Color.White;
-            this.buttonData.Location = new System.Drawing.Point(755, 80);
-            this.buttonData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonData.Name = "buttonData";
-            this.buttonData.Size = new System.Drawing.Size(104, 46);
-            this.buttonData.TabIndex = 53;
-            this.buttonData.Text = "조회하기";
-            this.buttonData.UseVisualStyleBackColor = false;
-            this.buttonData.Click += new System.EventHandler(this.buttonData_Click);
+            this.deleteDay.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.deleteDay.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.deleteDay.FlatAppearance.BorderSize = 2;
+            this.deleteDay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteDay.Font = new System.Drawing.Font("굴림", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.deleteDay.ForeColor = System.Drawing.Color.White;
+            this.deleteDay.Location = new System.Drawing.Point(753, 76);
+            this.deleteDay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.deleteDay.Name = "deleteDay";
+            this.deleteDay.Size = new System.Drawing.Size(104, 46);
+            this.deleteDay.TabIndex = 55;
+            this.deleteDay.Text = "투입 취소";
+            this.deleteDay.UseVisualStyleBackColor = false;
+            this.deleteDay.Click += new System.EventHandler(this.deleteDay_Click);
             // 
             // listViewPhoneBook
             // 
@@ -438,6 +422,11 @@
             this.listViewPhoneBook.UseCompatibleStateImageBehavior = false;
             this.listViewPhoneBook.View = System.Windows.Forms.View.Details;
             this.listViewPhoneBook.SelectedIndexChanged += new System.EventHandler(this.listViewPhoneBook_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            this.columnHeader1.Width = 0;
             // 
             // columnHeader2
             // 
@@ -495,11 +484,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 86;
             this.pictureBox1.TabStop = false;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "ID";
-            this.columnHeader1.Width = 0;
             // 
             // Form_Management
             // 
@@ -565,12 +549,11 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button buttonData;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.TextBox textBoxDate;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button buttonField;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Button deleteDay;
     }
 }
 

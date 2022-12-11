@@ -23,7 +23,7 @@ namespace Calendar.NETDemo
         int _port = 3306;
         string _database = "calendardb";
         string _id = "root";
-        string _pw = "bong02";
+        string _pw = "Halkeye14!";
         string _connectionAddress = "";
         [CustomRecurringFunction("RehabDates", "Calculates which days I should be getting Rehab")]
 
@@ -61,12 +61,9 @@ namespace Calendar.NETDemo
                     mysql.Open();
                     string selectQuery = string.Format("SELECT * FROM 인원");
                     string selectQuery2 = string.Format("SELECT * FROM 현장");
-                    string selectQuery3 = string.Format("SELECT * FROM 인원투입");
 
                     MySqlCommand command = new MySqlCommand(selectQuery, mysql);
                     MySqlCommand command2 = new MySqlCommand(selectQuery2, mysql);
-                    MySqlCommand command3 = new MySqlCommand(selectQuery3, mysql);
-
 
 
                     listView1.Items.Clear();
@@ -76,14 +73,17 @@ namespace Calendar.NETDemo
                     while (table.Read())
                     {
                         ListViewItem item = new ListViewItem();
-                        //item.Text = table["ID"].ToString();
-                        item.SubItems.Add(table["PeopleName"].ToString());
+                        item.Text = table["PeopleName"].ToString();
+                        //item.SubItems.Add(table["PeopleName"].ToString());
+                        item.SubItems.Add(table["PhoneNumber"].ToString());
+                        item.SubItems.Add(table["Address"].ToString());
                         item.SubItems.Add(table["Age"].ToString());
                         item.SubItems.Add(table["Sex"].ToString());
                         item.SubItems.Add(table["Height"].ToString());
                         item.SubItems.Add(table["Weight"].ToString());
-                        item.SubItems.Add(table["PhoneNumber"].ToString());
-                        item.SubItems.Add(table["Address"].ToString());
+                        item.SubItems.Add(table["Uniform"].ToString());
+                        item.SubItems.Add(table["PeopleDay"].ToString());
+                        item.SubItems.Add(table["PeopleDetail"].ToString());
                         listView1.Items.Add(item);
                     }
                     table.Close();
@@ -92,8 +92,8 @@ namespace Calendar.NETDemo
                     while (table2.Read())
                     {
                         ListViewItem item2 = new ListViewItem();
-                        //item2.Text = table2["ID"].ToString();
-                        item2.SubItems.Add(table2["CalendarField"].ToString());
+                        item2.Text = table2["CalendarField"].ToString();
+                        //item2.SubItems.Add(table2["CalendarField"].ToString());
                         item2.SubItems.Add(table2["CalendarDay"].ToString());
                         item2.SubItems.Add(table2["CalendarDetail"].ToString());
                         listView2.Items.Add(item2);
@@ -126,7 +126,7 @@ namespace Calendar.NETDemo
         {
             String name = txtName.Text;
             String day = dtDate.Value.ToString("yyyy/M/d");
-            String detail = txtPlace.Text;
+            String detail = txtCalendarDetail.Text;
 
             try
             {
@@ -143,9 +143,9 @@ namespace Calendar.NETDemo
                     MySqlCommand command2 = new MySqlCommand(selectQuery, mysql);
                     MySqlDataReader table2 = command2.ExecuteReader();
                     table2.Close();
-                    MySqlCommand command3 = new MySqlCommand(ableSafe, mysql);
-                    MySqlDataReader table3 = command3.ExecuteReader();
-                    table3.Close();
+                    MySqlCommand command4 = new MySqlCommand(ableSafe, mysql);
+                    MySqlDataReader table4 = command4.ExecuteReader();
+                    table4.Close();
                 }
             }
             catch (Exception exc)
@@ -170,13 +170,16 @@ namespace Calendar.NETDemo
             ListView listview = sender as ListView;
 
             int index = listview.FocusedItem.Index;
-            txtName.Text = listview.Items[index].SubItems[1].Text;
-            txtAge.Text = listview.Items[index].SubItems[2].Text;
-            txtSex.Text = listview.Items[index].SubItems[3].Text;
-            txtHeight.Text = listview.Items[index].SubItems[4].Text;
-            txtWeight.Text = listview.Items[index].SubItems[5].Text;
-            txtPhone.Text = listview.Items[index].SubItems[6].Text;
-            txtAddress.Text = listview.Items[index].SubItems[7].Text;
+            txtName.Text = listview.Items[index].SubItems[0].Text;
+            txtPhone.Text = listview.Items[index].SubItems[1].Text;
+            txtAddress.Text = listview.Items[index].SubItems[2].Text;
+            txtAge.Text = listview.Items[index].SubItems[3].Text;
+            txtSex.Text = listview.Items[index].SubItems[4].Text;
+            txtHeight.Text = listview.Items[index].SubItems[5].Text;
+            txtWeight.Text = listview.Items[index].SubItems[6].Text;
+            txtUniform.Text = listview.Items[index].SubItems[7].Text;
+            txtPeopleDay.Text = listview.Items[index].SubItems[8].Text;
+            txtPeopleDetail.Text = listview.Items[index].SubItems[9].Text;
         }
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e) // 텍스트박스에 투입 장소 연결
@@ -184,8 +187,9 @@ namespace Calendar.NETDemo
             ListView listview = sender as ListView;
 
             int index = listview.FocusedItem.Index;
-            txtPlace.Text = listview.Items[index].SubItems[1].Text;
-            dtDate.Text = listview.Items[index].SubItems[2].Text;
+            txtCalendarField.Text = listview.Items[index].SubItems[0].Text;
+            dtDate.Text = listview.Items[index].SubItems[1].Text;
+            txtCalendarDetail.Text = listview.Items[index].SubItems[2].Text;
         }
     }
 }
