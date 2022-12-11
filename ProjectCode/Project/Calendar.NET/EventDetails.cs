@@ -147,8 +147,8 @@ namespace Calendar.NET
                 {
                     mysql.Open();
                     string diableSafe = "SET SQL_SAFE_UPDATES = 0";
+                    string deletePeople = ($"update 인원 set PeopleDay= {0000-00-00} where PeopleDay='{day}';");
                     string selectQuery = ($"delete from 현장 where CalendarDay='{day}'");
-                    string deletePeople = ($"update 인원 set PeopleDay='2020-01-01'where PeopleDay='{day}';");
                     string ableSafe = "SET SQL_SAFE_UPDATES = 1";
 
                     MySqlCommand command1 = new MySqlCommand(diableSafe, mysql);
