@@ -39,7 +39,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.DetailTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.InputPeopleName = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -136,15 +136,15 @@
             this.label4.TabIndex = 15;
             this.label4.Text = "투입 인원";
             // 
-            // textBox2
+            // InputPeopleName
             // 
-            this.textBox2.Location = new System.Drawing.Point(133, 128);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(263, 50);
-            this.textBox2.TabIndex = 16;
+            this.InputPeopleName.Location = new System.Drawing.Point(133, 128);
+            this.InputPeopleName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.InputPeopleName.Multiline = true;
+            this.InputPeopleName.Name = "InputPeopleName";
+            this.InputPeopleName.ReadOnly = true;
+            this.InputPeopleName.Size = new System.Drawing.Size(263, 50);
+            this.InputPeopleName.TabIndex = 16;
             // 
             // button1
             // 
@@ -163,7 +163,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(464, 372);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.InputPeopleName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.DetailTextBox);
             this.Controls.Add(this.label3);
@@ -199,7 +199,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox DetailTextBox;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox InputPeopleName;
         private System.Windows.Forms.Button button1;
     }
 }

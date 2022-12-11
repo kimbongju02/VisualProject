@@ -1,7 +1,0 @@
-C:\Users\kimbo\OneDrive\바탕 화면\2-2수업\비주얼프로그래밍\프로젝트\code\ProjectCode\Project\Project\obj\x86\Debug\Calendar.NETDemo.csproj.AssemblyReference.cache
-C:\Users\kimbo\OneDrive\바탕 화면\2-2수업\비주얼프로그래밍\프로젝트\code\ProjectCode\Project\Project\obj\x86\Debug\Calendar.NET.AddDetails.resources
-C:\Users\kimbo\OneDrive\바탕 화면\2-2수업\비주얼프로그래밍\프로젝트\code\ProjectCode\Project\Project\obj\x86\Debug\Calendar.NETDemo.Form1.resources
-C:\Users\kimbo\OneDrive\바탕 화면\2-2수업\비주얼프로그래밍\프로젝트\code\ProjectCode\Project\Project\obj\x86\Debug\Calendar.NETDemo.Properties.Resources.resources
-C:\Users\kimbo\OneDrive\바탕 화면\2-2수업\비주얼프로그래밍\프로젝트\code\ProjectCode\Project\Project\obj\x86\Debug\Calendar.NETDemo.csproj.GenerateResource.cache
-C:\Users\kimbo\OneDrive\바탕 화면\2-2수업\비주얼프로그래밍\프로젝트\code\ProjectCode\Project\Project\obj\x86\Debug\Calendar.NETDemo.csproj.CoreCompileInputs.cache
-C:\Users\kimbo\OneDrive\바탕 화면\2-2수업\비주얼프로그래밍\프로젝트\code\ProjectCode\Project\Project\obj\x86\Debug\Project.Form1.resources

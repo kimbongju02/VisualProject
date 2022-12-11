@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ProjectCode",
+    "\\ProjectCode\\Project"
   ],
-  "SelectedNode": "\\CalandarApp_Test.sln",
+  "SelectedNode": "\\ProjectCode\\Project\\Calendar.NET.sln",
   "PreviewInSolutionExplorer": false
 }

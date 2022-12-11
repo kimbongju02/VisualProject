@@ -21,9 +21,9 @@ namespace Calendar.NETDemo
     {
         string _server = "localhost";
         int _port = 3306;
-        string _database = "visual_db";
+        string _database = "calendardb";
         string _id = "root";
-        string _pw = "Halkeye14!";
+        string _pw = "bong02";
         string _connectionAddress = "";
         [CustomRecurringFunction("RehabDates", "Calculates which days I should be getting Rehab")]
 
@@ -59,30 +59,30 @@ namespace Calendar.NETDemo
                 using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
                 {
                     mysql.Open();
-                    string selectQuery = string.Format("SELECT * FROM test");
+                    string selectQuery = string.Format("SELECT * FROM 인원");
                     string selectQuery2 = string.Format("SELECT * FROM 현장");
-                    string selectQuery3 = string.Format("SELECT * FROM 현장투입");
+                    string selectQuery3 = string.Format("SELECT * FROM 인원투입");
 
                     MySqlCommand command = new MySqlCommand(selectQuery, mysql);
                     MySqlCommand command2 = new MySqlCommand(selectQuery2, mysql);
                     MySqlCommand command3 = new MySqlCommand(selectQuery3, mysql);
 
-                    
+
 
                     listView1.Items.Clear();
                     listView2.Items.Clear();
 
                     MySqlDataReader table = command.ExecuteReader(); // 인원 테이블 읽기
-                    while (table.Read()) 
+                    while (table.Read())
                     {
                         ListViewItem item = new ListViewItem();
-                        item.Text = table["ID"].ToString();
-                        item.SubItems.Add(table["Name"].ToString());
+                        //item.Text = table["ID"].ToString();
+                        item.SubItems.Add(table["PeopleName"].ToString());
                         item.SubItems.Add(table["Age"].ToString());
                         item.SubItems.Add(table["Sex"].ToString());
                         item.SubItems.Add(table["Height"].ToString());
                         item.SubItems.Add(table["Weight"].ToString());
-                        item.SubItems.Add(table["Phone"].ToString());
+                        item.SubItems.Add(table["PhoneNumber"].ToString());
                         item.SubItems.Add(table["Address"].ToString());
                         listView1.Items.Add(item);
                     }
@@ -92,10 +92,10 @@ namespace Calendar.NETDemo
                     while (table2.Read())
                     {
                         ListViewItem item2 = new ListViewItem();
-                        item2.Text = table2["ID"].ToString();
-                        item2.SubItems.Add(table2["이름"].ToString());
-                        item2.SubItems.Add(table2["날짜"].ToString());
-                        item2.SubItems.Add(table2["세부사항"].ToString());
+                        //item2.Text = table2["ID"].ToString();
+                        item2.SubItems.Add(table2["CalendarField"].ToString());
+                        item2.SubItems.Add(table2["CalendarDay"].ToString());
+                        item2.SubItems.Add(table2["CalendarDetail"].ToString());
                         listView2.Items.Add(item2);
                     }
                     table.Close();
@@ -127,32 +127,25 @@ namespace Calendar.NETDemo
             String name = txtName.Text;
             String day = dtDate.Value.ToString("yyyy/M/d");
             String detail = txtPlace.Text;
-            Form1.addDay = day;
 
             try
             {
                 using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
                 {
                     mysql.Open();
-                    string selectQuery = ($"insert into 현장투입(이름, 현장, 날짜) values('{name}','{detail}','{day}');");
+                    string diableSafe = "SET SQL_SAFE_UPDATES = 0";
+                    string selectQuery = ($"update 인원 set PeopleDay='{day}' where PeopleName='{name}';");
+                    string ableSafe = "SET SQL_SAFE_UPDATES = 1";
 
-                    MySqlCommand command = new MySqlCommand(selectQuery, mysql);
-                    MySqlDataReader table = command.ExecuteReader();
-                    table.Close();
-
-                    var ce2 = new CustomEvent
-                    {
-                        IgnoreTimeComponent = false,
-                        EventText = name,
-                        Date = Convert.ToDateTime(day),
-                        EventLengthInHours = 2f,
-                        RecurringFrequency = RecurringFrequencies.None,
-                        EventFont = new Font("Verdana", 12, FontStyle.Regular),
-                        Enabled = true,
-                        EventColor = Color.FromArgb(120, 255, 120),
-                        EventTextColor = Color.Black,
-                        ThisDayForwardOnly = true
-                    };
+                    MySqlCommand command1 = new MySqlCommand(diableSafe, mysql);
+                    MySqlDataReader table1 = command1.ExecuteReader();
+                    table1.Close();
+                    MySqlCommand command2 = new MySqlCommand(selectQuery, mysql);
+                    MySqlDataReader table2 = command2.ExecuteReader();
+                    table2.Close();
+                    MySqlCommand command3 = new MySqlCommand(ableSafe, mysql);
+                    MySqlDataReader table3 = command3.ExecuteReader();
+                    table3.Close();
                 }
             }
             catch (Exception exc)
@@ -192,6 +185,7 @@ namespace Calendar.NETDemo
 
             int index = listview.FocusedItem.Index;
             txtPlace.Text = listview.Items[index].SubItems[1].Text;
+            dtDate.Text = listview.Items[index].SubItems[2].Text;
         }
     }
 }

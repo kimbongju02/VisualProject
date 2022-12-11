@@ -53,7 +53,6 @@ namespace TeamProject3
                     while (table.Read())
                     {
                         ListViewItem item = new ListViewItem();
-                        item.Text = table["ID"].ToString();
                         item.SubItems.Add(table["PeopleName"].ToString());
                         item.SubItems.Add(table["PhoneNumber"].ToString());
                         item.SubItems.Add(table["Address"].ToString());
@@ -83,7 +82,7 @@ namespace TeamProject3
                 {
 
                     mysql.Open();
-                    string insertQuery = string.Format("INSERT INTO calendardb (PeopleName, PhoneNumber, Address, Sex, Height, Weight, Uniform, PeopleDetail) " +
+                    string insertQuery = string.Format("INSERT INTO 인원 (PeopleName, PhoneNumber, Address, Sex, Height, Weight, Uniform, PeopleDetail) " +
                         "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
                         textBoxName.Text, textBoxPhone.Text, textBoxAddress.Text, textBoxSex.Text, 
                         textBoxHeight.Text, textBoxWeight.Text, textBoxUniform.Text, textBoxDetail.Text);
@@ -119,10 +118,10 @@ namespace TeamProject3
                 using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
                 {
                     mysql.Open();
-                    int pos = listViewPhoneBook.SelectedItems[0].Index;
-                    int index = Convert.ToInt32(listViewPhoneBook.Items[pos].Text);
-                    string updateQuery = string.Format("UPDATE calendardb SET Name = '{1}', PhoneNumber = '{2}',  Address = '{3}', Sex = '{4}', Height = '{5}',  Weight = '{6}', Uniform = '{7}', Detail = '{8}' WHERE id={0};", index,
-                        textBoxName.Text, textBoxPhone.Text, textBoxAddress.Text, textBoxSex.Text, textBoxHeight.Text, textBoxWeight.Text, textBoxUniform.Text, textBoxDetail.Text);
+                    string updateQuery = string.Format($"UPDATE 인원 SET  PhoneNumber = '{textBoxPhone.Text}',  " +
+                        $"Address = '{textBoxAddress.Text}', Sex = '{textBoxSex.Text}', Height = '{textBoxHeight.Text}',  " +
+                        $"Weight = '{textBoxWeight.Text}', Uniform = '{textBoxUniform.Text}', PeopleDetail = '{textBoxDetail.Text}' " +
+                        $"where  PeopleName='{textBoxName.Text}';");
 
                     MySqlCommand command = new MySqlCommand(updateQuery, mysql);
                     if (command.ExecuteNonQuery() != 1)
@@ -157,15 +156,16 @@ namespace TeamProject3
                 {
                     using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
                     {
-
-
                         mysql.Open();
-                        int pos = listViewPhoneBook.SelectedItems[0].Index;
-                        int index = Convert.ToInt32(listViewPhoneBook.Items[pos].Text);
-                        string deleteQuery = string.Format("DELETE FROM calendardb WHERE Id={0};", index);
+                        string diableSafe = "SET SQL_SAFE_UPDATES = 0";
+                        string deleteQuery = string.Format($"DELETE FROM 인원 WHERE PeopleName='{textBoxName.Text}';");
+                        string ableSafe = "SET SQL_SAFE_UPDATES = 1";
 
-                        MySqlCommand command = new MySqlCommand(deleteQuery, mysql);
-                        if (command.ExecuteNonQuery() != 1)
+                        MySqlCommand command1 = new MySqlCommand(diableSafe, mysql);
+                        MySqlCommand command2 = new MySqlCommand(deleteQuery, mysql);
+                        MySqlCommand command4 = new MySqlCommand(ableSafe, mysql);
+
+                        if (command2.ExecuteNonQuery() != 1)
                             MessageBox.Show("Failed to delete data.");
 
                         textBoxName.Text = "";
@@ -236,7 +236,7 @@ namespace TeamProject3
                 {
                     mysql.Open();
                    
-                    string selectQuery = string.Format("SELECT * FROM calendardb");
+                    string selectQuery = string.Format("SELECT * FROM 인원");
 
                     MySqlCommand command = new MySqlCommand(selectQuery, mysql);
                     MySqlDataReader table = command.ExecuteReader();
@@ -250,7 +250,6 @@ namespace TeamProject3
                         {
 
                             ListViewItem item = new ListViewItem();
-                            item.Text = table["ID"].ToString();
                             item.SubItems.Add(table["PeopleName"].ToString());
                             item.SubItems.Add(table["PhoneNumber"].ToString());
                             item.SubItems.Add(table["Address"].ToString());
@@ -300,7 +299,3 @@ namespace TeamProject3
         }
     }
 }
-         
-           
-  
-
