@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Calendar.NET;
+using TeamProject3;
 using MySql.Data.MySqlClient;
-
 
 
 
@@ -65,11 +65,8 @@ namespace Calendar.NETDemo
                     mysql.Open();
                     //accounts_table의 전체 데이터를 조회합니다.            
                     string selectQuery = string.Format($"SELECT * FROM 현장");
-                    string selectQuery2 = string.Format($"SELECT * FROM 인원");
 
                     MySqlCommand command = new MySqlCommand(selectQuery, mysql);
-                    MySqlCommand command2 = new MySqlCommand(selectQuery2, mysql);
-
                     MySqlDataReader table = command.ExecuteReader();
 
                     while (table.Read())
@@ -90,27 +87,9 @@ namespace Calendar.NETDemo
                         calendar1.AddEvent(ce2);
                     }
                     table.Close();
-
-                    MySqlDataReader table2 = command2.ExecuteReader();
-                    while (table2.Read())
-                    {
-                        var ce3 = new CustomEvent // 인원 투입 이벤트
-                        {
-                            IgnoreTimeComponent = false,
-                            EventText = table2["PeopleName"].ToString(),
-                            Date = Convert.ToDateTime(table2["PeopleDay"].ToString()),
-                            EventLengthInHours = 2f,
-                            RecurringFrequency = RecurringFrequencies.None,
-                            EventFont = new Font("Verdana", 12, FontStyle.Regular),
-                            Enabled = true,
-                            EventColor = Color.FromArgb(120, 255, 120),
-                            EventTextColor = Color.Black,
-                            ThisDayForwardOnly = true
-                        };
-                        calendar1.AddEvent(ce3);
                     }
                 }
-            }
+            
             catch (Exception exc)
             {
                 MessageBox.Show("Form1 button1_Click\n"+exc.Message);
@@ -121,6 +100,12 @@ namespace Calendar.NETDemo
         {
             InputPeople f2 = new InputPeople();
             f2.Show();
+        }
+
+        private void 인원ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TeamProject3.Form_Management People = new TeamProject3.Form_Management();
+            People.Show();
         }
     }
 }

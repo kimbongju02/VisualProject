@@ -28,9 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             calendar1 = new Calendar.NET.Calendar();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.달력ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.인원ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -58,8 +64,8 @@
             // calendar1
             // 
             calendar1.AllowEditingEvents = false;
-            calendar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            calendar1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             calendar1.BackColor = System.Drawing.Color.Transparent;
             calendar1.CalendarDate = new System.DateTime(2012, 4, 24, 13, 16, 0, 0);
@@ -71,7 +77,7 @@
             calendar1.DimDisabledEvents = true;
             calendar1.HighlightCurrentDay = true;
             calendar1.LoadPresetHolidays = true;
-            calendar1.Location = new System.Drawing.Point(16, 14);
+            calendar1.Location = new System.Drawing.Point(16, 40);
             calendar1.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             calendar1.Name = "calendar1";
             calendar1.ShowArrowControls = true;
@@ -80,9 +86,40 @@
             calendar1.ShowDisabledEvents = false;
             calendar1.ShowEventTooltips = true;
             calendar1.ShowTodayButton = true;
-            calendar1.Size = new System.Drawing.Size(952, 618);
+            calendar1.Size = new System.Drawing.Size(947, 592);
             calendar1.TabIndex = 0;
             calendar1.TodayFont = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.달력ToolStripMenuItem,
+            this.인원ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1073, 28);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // 달력ToolStripMenuItem
+            // 
+            this.달력ToolStripMenuItem.Name = "달력ToolStripMenuItem";
+            this.달력ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.달력ToolStripMenuItem.Text = "달력";
+            // 
+            // 인원ToolStripMenuItem
+            // 
+            this.인원ToolStripMenuItem.Name = "인원ToolStripMenuItem";
+            this.인원ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.인원ToolStripMenuItem.Text = "인원";
+            this.인원ToolStripMenuItem.Click += new System.EventHandler(this.인원ToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -93,17 +130,26 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(calendar1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 달력ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 인원ToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         public static NET.Calendar calendar1;
     }
 }

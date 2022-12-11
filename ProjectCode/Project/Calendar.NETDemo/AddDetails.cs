@@ -7,7 +7,6 @@ using System.Linq;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 using Calendar.NET;
-using Calendar.NETDemo;
 
 
 namespace Calendar.NET

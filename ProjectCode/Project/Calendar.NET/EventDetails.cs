@@ -53,16 +53,25 @@ namespace Calendar.NET
                 using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
                 {
                     mysql.Open();
-                    string selectQuery = ($"select * from 현장 where CalendarDay='{fisrtDay}';");
+                    String People = "";
+                    string selectCalendarDetail = ($"select * from 현장 where CalendarDay='{fisrtDay}';");
+                    string selectPeopleName = ($"select * from 인원 where PeopleDay='{fisrtDay}';");
 
-                    MySqlCommand command2 = new MySqlCommand(selectQuery, mysql);
+                    MySqlCommand command1 = new MySqlCommand(selectCalendarDetail, mysql);
+                    MySqlDataReader table1 = command1.ExecuteReader();
+                    while (table1.Read())
+                    {
+                        DetailTextBox.Text = table1["CalendarDetail"].ToString();
+                    }
+                    table1.Close();
+                    MySqlCommand command2 = new MySqlCommand(selectPeopleName, mysql);
                     MySqlDataReader table2 = command2.ExecuteReader();
                     while (table2.Read())
                     {
-                        DetailTextBox.Text = table2["CalendarDetail"].ToString();
+                        People += table2["PeopleName"].ToString()+" ";
                     }
-
-                        table2.Close();
+                    table2.Close();
+                    InputPeopleName.Text = People;
                 }
             }
             catch (Exception exc)
@@ -139,6 +148,7 @@ namespace Calendar.NET
                     mysql.Open();
                     string diableSafe = "SET SQL_SAFE_UPDATES = 0";
                     string selectQuery = ($"delete from 현장 where CalendarDay='{day}'");
+                    string deletePeople = ($"update 인원 set PeopleDay='2020-01-01'where PeopleDay='{day}';");
                     string ableSafe = "SET SQL_SAFE_UPDATES = 1";
 
                     MySqlCommand command1 = new MySqlCommand(diableSafe, mysql);
@@ -147,9 +157,12 @@ namespace Calendar.NET
                     MySqlCommand command2 = new MySqlCommand(selectQuery, mysql);
                     MySqlDataReader table2 = command2.ExecuteReader();
                     table2.Close();
-                    MySqlCommand command3 = new MySqlCommand(ableSafe, mysql);
+                    MySqlCommand command3 = new MySqlCommand(deletePeople, mysql);
                     MySqlDataReader table3 = command3.ExecuteReader();
                     table3.Close();
+                    MySqlCommand command4 = new MySqlCommand(ableSafe, mysql);
+                    MySqlDataReader table4 = command4.ExecuteReader();
+                    table4.Close();
                 }
             }
             catch (Exception exc)

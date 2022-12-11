@@ -141,6 +141,10 @@
       <Project>{6CBC43B6-E950-49B2-B14A-563C50FCD5C3}</Project>
       <Name>Calendar.NET</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TeamProject3\TeamProject3.csproj">
+      <Project>{cc076f9c-3614-4bd9-89be-aad80a5b49b4}</Project>
+      <Name>TeamProject3</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
