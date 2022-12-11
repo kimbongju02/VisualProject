@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Management;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using ListView = System.Windows.Forms.ListView;
 
@@ -26,7 +29,8 @@ namespace TeamProject3
         public Form_Management()
         {
             InitializeComponent();
-            _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4}", _server, _port, _database, _id, _pw);
+            _connectionAddress = string.Format("Server={0};Port={1};Database={2};Uid={3};Pwd={4};" +
+                "Persist Security Info=True;Convert Zero Datetime=True", _server, _port, _database, _id, _pw);
         }
 
         //로드시 테이블 조회
@@ -61,6 +65,8 @@ namespace TeamProject3
                         item.SubItems.Add(table["Weight"].ToString());
                         item.SubItems.Add(table["Uniform"].ToString());
                         item.SubItems.Add(table["PeopleDetail"].ToString());
+                        item.SubItems.Add(table["PeopleDay"].ToString());
+                        item.SubItems.Add(table["PeopleDay"].ToString());
                         listViewPhoneBook.Items.Add(item);
                     }
 
@@ -82,8 +88,8 @@ namespace TeamProject3
                 {
 
                     mysql.Open();
-                    string insertQuery = string.Format("INSERT INTO 인원 (PeopleName, PhoneNumber, Address, Sex, Height, Weight, Uniform, PeopleDetail) " +
-                        "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}');",
+                    string insertQuery = string.Format("INSERT INTO 인원 (PeopleName, PhoneNumber, Address, Sex, Height, Weight, Uniform, PeopleDetail, PeopleDay) " +
+                        "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}','0000-00-00');",
                         textBoxName.Text, textBoxPhone.Text, textBoxAddress.Text, textBoxSex.Text, 
                         textBoxHeight.Text, textBoxWeight.Text, textBoxUniform.Text, textBoxDetail.Text);
 
@@ -207,6 +213,7 @@ namespace TeamProject3
             textBoxWeight.Text = listview.Items[index].SubItems[6].Text;
             textBoxUniform.Text = listview.Items[index].SubItems[7].Text;
             textBoxDetail.Text = listview.Items[index].SubItems[8].Text;
+            textBoxDate.Text = listview.Items[index].SubItems[9].Text;
         }
         //비우기 버튼 클릭시
         private void buttonReset_Click(object sender, EventArgs e)
@@ -258,6 +265,7 @@ namespace TeamProject3
                             item.SubItems.Add(table["Weight"].ToString());
                             item.SubItems.Add(table["Uniform"].ToString());
                             item.SubItems.Add(table["PeopleDetail"].ToString());
+                            item.SubItems.Add(table["PeopleDay"].ToString());
                             listViewPhoneBook.Items.Add(item);
 
                         }
@@ -283,18 +291,74 @@ namespace TeamProject3
         //전화번호 텍스트 상자 입력
         private void textBoxPhone_KeyPress(object sender, KeyPressEventArgs e)  
         {
-           
             if (!(char.IsDigit(e.KeyChar) || e.KeyChar == '-' || e.KeyChar == Convert.ToInt32(Keys.Back)))    //숫자와 '-' 만 입력가능
             {
                 e.Handled = true;
                 MessageBox.Show("숫자와-만입력가능합니다.");
             }
-
-
         }
 
         private void buttonData_Click(object sender, EventArgs e)
         {
+            selectTable();
+        }
+
+        private void textBoxHeight_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToInt32(Keys.Back)))    //숫자와만 입력가능
+            {
+                e.Handled = true;
+                MessageBox.Show("숫자만입력가능합니다.");
+            }
+        }
+
+        private void textBoxWeight_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToInt32(Keys.Back)))    //숫자와 만 입력가능
+            {
+                e.Handled = true;
+                MessageBox.Show("숫자만입력가능합니다.");
+            }
+        }
+
+        private void deleteDay_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (MySqlConnection mysql = new MySqlConnection(_connectionAddress))
+                {
+                    mysql.Open();
+                    string diableSafe = "SET SQL_SAFE_UPDATES = 0";
+                    string deletePeople = ($"update 인원 set PeopleDay={0000-00-00} where PeopleName='{textBoxName.Text}';");
+                    string ableSafe = "SET SQL_SAFE_UPDATES = 1";
+
+                    MySqlCommand command1 = new MySqlCommand(diableSafe, mysql);
+                    MySqlDataReader table1 = command1.ExecuteReader();
+                    table1.Close();
+                    MySqlCommand command2 = new MySqlCommand(deletePeople, mysql);
+                    MySqlDataReader table2 = command2.ExecuteReader();
+                    table2.Close();
+                    MySqlCommand command4 = new MySqlCommand(ableSafe, mysql);
+                    MySqlDataReader table4 = command4.ExecuteReader();
+                    table4.Close();
+
+                    textBoxName.Text = "";
+                    textBoxPhone.Text = "";
+                    textBoxAddress.Text = "";
+                    textBoxSex.Text = "";
+                    textBoxHeight.Text = "";
+                    textBoxWeight.Text = "";
+                    textBoxUniform.Text = "";
+                    textBoxDetail.Text = "";
+                    textBoxDate.Text= "";
+                }
+
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
             selectTable();
         }
     }

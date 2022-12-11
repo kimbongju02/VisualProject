@@ -61,12 +61,9 @@ namespace Calendar.NETDemo
                     mysql.Open();
                     string selectQuery = string.Format("SELECT * FROM 인원");
                     string selectQuery2 = string.Format("SELECT * FROM 현장");
-                    string selectQuery3 = string.Format("SELECT * FROM 인원투입");
 
                     MySqlCommand command = new MySqlCommand(selectQuery, mysql);
                     MySqlCommand command2 = new MySqlCommand(selectQuery2, mysql);
-                    MySqlCommand command3 = new MySqlCommand(selectQuery3, mysql);
-
 
 
                     listView1.Items.Clear();
@@ -143,9 +140,9 @@ namespace Calendar.NETDemo
                     MySqlCommand command2 = new MySqlCommand(selectQuery, mysql);
                     MySqlDataReader table2 = command2.ExecuteReader();
                     table2.Close();
-                    MySqlCommand command3 = new MySqlCommand(ableSafe, mysql);
-                    MySqlDataReader table3 = command3.ExecuteReader();
-                    table3.Close();
+                    MySqlCommand command4 = new MySqlCommand(ableSafe, mysql);
+                    MySqlDataReader table4 = command4.ExecuteReader();
+                    table4.Close();
                 }
             }
             catch (Exception exc)
@@ -171,7 +168,6 @@ namespace Calendar.NETDemo
 
             int index = listview.FocusedItem.Index;
             txtName.Text = listview.Items[index].SubItems[1].Text;
-            txtAge.Text = listview.Items[index].SubItems[2].Text;
             txtSex.Text = listview.Items[index].SubItems[3].Text;
             txtHeight.Text = listview.Items[index].SubItems[4].Text;
             txtWeight.Text = listview.Items[index].SubItems[5].Text;
